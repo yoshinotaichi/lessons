@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jquery: insert</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>jquery: insert</h1>
+	<hr>
+
+	<ul>
+		<li>apple</li>
+		<li>banana</li>
+		<li>grape</li>
+		<li>strawberry</li>
+	</ul>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('li:last-child').append('<li>pear</li>')
+		})
+	</script>
+</body>
+</html>

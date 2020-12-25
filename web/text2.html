@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jquery: quiz</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>このクラスの担任は誰ですか？</h1>
+	<hr>
+
+	<button id="yamamoto">山本先生</button>
+	<br>
+	<button id="tanaka">田中先生</button>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('#tanaka').on('click', function(){
+				$('h1').text('正解です！');
+			});
+			$('#yamamoto').on('click', function(){
+				$('h1').text('ちがいます！');
+			});
+		})
+	</script>
+
+</body>
+</html>
