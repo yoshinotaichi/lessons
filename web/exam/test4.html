@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test4</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>test4: ぜんぶきえる</h1>
+	クリックしたら、それが消える
+
+	<hr>
+
+	<h2>そうにゃん</h2>
+	<img src="img/sotetsu.jpg" width="200">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$("img").on("click", function(){
+			$(this).hide(slow);
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test:001, 002</title>
+	<meta charset="utf-8">
+	<style>
+	</style>
+</head>
+<body>
+	<h1>test</h1>
+	001, 002
+
+	<hr>
+
+	<ul>
+		<li>ぶり</li>
+		<li>はまち</li>
+		<li>たい</li>
+		<li>まぐろ</li>
+		<li>こはだ</li>
+	</ul>
+
+	<hr>
+
+	<table border="1">
+		<tr class="buri">
+			<td>ぶり</td>
+			<td>鰤</td>
+		</tr>
+		<tr>
+			<td class="tai">たい</td>
+			<td class="tai">鯛</td>
+		</tr>
+		<tr>
+			<td>はまち</td>
+			<td>魬</td>
+		</tr>
+		<tr>
+			<td>まぐろ</td>
+			<td>鮪</td>
+		</tr>
+		<tr>
+			<td>こはだ</td>
+			<td>小鰭</td>
+		</tr>
+	</table>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			// clickしたら、、、_table
+			$("td").on("click", function(){
+				$(this).css("color", "blue");
+			})
+		})
+	</script>
+
+</body>
+</html>

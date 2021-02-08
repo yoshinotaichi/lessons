@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>test06</title>
+  </head>
+  <body>
+    <h1>test06</h1>
+
+    ‰æ‘œ‚ðƒNƒŠƒbƒN‚µ‚½‚ç”½‘Î‚É‚È‚é
+
+    <hr>
+
+    <img id="img1" src="img/sotetsu.jpg" width=200>
+    <img id="img2" src="img/duke.png" width=200>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(function(){
+	let img1 = "img/sotetsu.jpg";
+	let img2 = "img/duke.png";
+	let tmp = "";
+        $("img").on("click", function(){
+	  tmp = img1;
+	  img1 = img2;
+	  img2 = tmp;
+	  $("#img1").attr("src", img1);
+	  $("#img2").attr("src", img2);
+	});
+      })
+    </script>
+  </body>
+</html>
