@@ -1,42 +1,76 @@
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-
-public class Test3 extends Application {
+public class Test3 {
 	public static void main(String[] args) {
-		launch( args );
-	}
-
-	@Override
-	public void start( Stage stage ) throws Exception {
-		Label left = new Label( "hello" );
-		Label right = new Label( "ALOHA" );
-		Button button = new Button( "OK" );
-
-		button.setOnAction( new EventHandler<ActionEvent>(){
-			@Override
-			public void handle( ActionEvent e ) {
-				String data = left.getText();
-				left.setText( right.getText() );
-				right.setText( data );
-			}
-		});
-
-
-		BorderPane pane = new BorderPane();
-		pane.setLeft( left );
-		pane.setRight( right );
-		pane.setBottom( button );
-
-		Scene scene = new Scene( pane, 400, 300 );
-
-		stage.setScene( scene );
-		stage.show();
+		Person p = new Person( "Yoshino", "Kisarazu", 46, true );
+		p.sayHello();
 	}
 }
+
+// class Person;
+class Person {
+	// data
+	private String name;
+	private String address;
+	private int age;
+	private boolean likesMovie;
+	private int num;
+
+	// method;  constructor & sayHello()
+	public Person( String name, String address, int age, boolean likesMovie ) {
+		int num = 0;
+
+		setName( name );
+		setAddress( address );
+		setAge( age );
+		setLikesMovie( likesMovie );
+
+		if ( num == 1 ){
+			System.exit(1);
+		}
+    }
+
+ 	public void sayHello(){
+	  String person = "My name is "+name+"."+"I am "+age+" years old."+"I live in "+address+". And, I ";
+	  if ( this.likesMovie ) {
+	  	person += "love movies!";
+	  } else {
+	  	person += "don't like movies.";
+	  }
+	  System.out.println( person);
+	}
+
+	public void setName( String data ) {
+		if ( data.length() >= 5 ) {
+			this.name = data;
+		} else {
+			this.num = 1;
+			handleError( "name" );
+		}
+	}
+
+	public void setAddress( String data ) {
+		if ( data.length() >= 4 ) {
+			this.address = data;
+		} else {
+			this.num = 1;
+			handleError( "address" );
+		}
+	}
+
+	public void setAge( int data ) {
+		if ( data >= 15 ) {
+			this.age = data;
+		} else {
+			this.num = 1;
+			handleError( "age" );
+		}
+	}
+
+	public void setLikesMovie( boolean flag ) {
+		this.likesMovie = flag;
+	}
+
+	public void handleError( String fieldName ) {
+		System.out.println( fieldName + "のデータに問題があります。" );
+		System.exit( 1 );
+	}
+} // class の終わり

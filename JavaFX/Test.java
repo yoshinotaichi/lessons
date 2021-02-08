@@ -1,48 +1,62 @@
-import javafx.animation.Animation;
-import javafx.animation.TranslateTransition;
-import javafx.util.Duration;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.animation.AnimationTimer;
 
 public class Test extends Application {
+	// data
+	private BreakoutThread breakoutthread;
+
+	// method
 	public static void main(String[] args) {
 		launch( args );
 	}
 
 	@Override
-	public void start( Stage stage ) throws Exception {
-		View v = new View();
-		Scene scene = new Scene( v, 500, 400 );
+	public void start( Stage stage ) {
+		stage.setTitle( "ALOHA!" );
+
+		Pane pane = new Pane();
+		Scene scene = new Scene( pane );
 		stage.setScene( scene );
+
+		Canvas canvas = new Canvas( 640, 480 );
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+		pane.getChildren().add( canvas );
+
+		breakoutthread = new BreakoutThread( gc );
+		breakoutthread.start();
+
 		stage.show();
 	}
 }
 
 
 
+class BreakoutThread extends AnimationTimer {
+	// data
+	private GraphicsContext gc;
+	private int count;
 
-class View extends Group {
-	public View() {
-		// shape, color
-		Circle circle = new Circle( 0, 0, 30 );
-		circle.setFill( Color.BLUE );
+	// method
+	public BreakoutThread( GraphicsContext gc ) {
+		this.gc = gc;
+		this.count = 0;
+	}
 
-		// animation
-		TranslateTransition animation = new TranslateTransition( Duration.seconds(2), circle );
-		// from, to
-		animation.setFromX(250);
-		animation.setFromY(400);
-		animation.setToX(250);
-		animation.setToY(0);
-		// setCycleCount
-		animation.setCycleCount( Animation.INDEFINITE );
+	@Override
+	public void handle( long time ) {
+		count++;
 
-		// play, add
-		animation.play();
-		getChildren().add( circle );
+		gc.clearRect( 0, 0, 640, 480 );
+
+		gc.setStroke( Color.BLACK );
+		gc.fillText( "ALOHA", 200, 200 );
+		gc.fillText( "count: "+count, 450, 450 );
+		gc.fillText( "time: "+time, 450, 470 );
 	}
 }

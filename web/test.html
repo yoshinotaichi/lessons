@@ -1,28 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>クイズ</title>
+	<title>jquery test</title>
 	<meta charset="utf-8">
+	<style>
+		.blue {
+			color: blue;
+		}
+
+		.red {
+			color: red;
+		}
+	</style>
 </head>
 <body>
-	<h1>クイズ with jQuery</h1>
-	問題をクリックしたら、正解が表示されます。
+	<h1>test: jQuery</h1>
+	クリックしたら色を変える
 
 	<hr>
 
-	<p>
-	  「馬場」この名前の発音は、なんでしょう？
-	</p>
+	<img src="gazo/duke.png" width="300">
+
+	<hr>
+
+	<ul>
+		<li>apple</li>
+		<li>banana</li>
+		<li>grape</li>
+		<li>strawberry</li>
+	</ul>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
-		$("p").on("click", function(){
-			$("p").text("ばば");
-		});
+		$(function(){
+			// h1をクリックした時の処理
+			$("h1").on("click", function(){
+				$(this).addClass("blue");
+			});
 
-		$("h1").on("click", function(){
-			$("body").hide("slow");
-		});
+			// imgをクリックした時の処理
+			$("img").on("click", function(){
+				$(this).attr("src", "gazo/gnu.png");
+			});
+
+
+			// データをつくる
+			let apple = 1;
+			const fruits = ["apple", "banana", "grape", "strawberry"];
+
+			// liをクリックしたら text を変更する
+			$("li").on("click", function(){
+				if( apple == 1 ) {
+					$(this).text("ALOHA!").addClass("red");
+					apple = 0;
+				} else {
+					const num = $(this).index();
+
+					$(this).text( fruits[ num ] ).removeClass("red");
+					apple = 1;
+				}
+			});
+
+
+			$("img").on("click", function(e){
+				$("h1").text( e.clientX );
+			});
+		})
 	</script>
 
 </body>

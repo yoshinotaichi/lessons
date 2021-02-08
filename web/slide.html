@@ -10,7 +10,9 @@
 
 	<hr>
 
-	<img src="gazo/duke.png">
+	<img src="gazo/duke.png" width="300">
+	<h2>Duke; Javaのキャラクタ</h2>
+
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
@@ -22,9 +24,16 @@
 				'gazo/sotetsu.jpg'
 			]
 
+			const gazoText = [
+				'Duke; Javaのキャラクタ',
+				'gnu; ヌー',
+				'Pythonロゴ',
+				'そうにゃん'
+			]
+
 			let num = 0
 
-			$("img").on("mouseout", function(){
+			$("img").on("click", function(){
 				num++
 
 				if( num >= gazofiles.length ) {
@@ -32,6 +41,12 @@
 				}
 
 				$("img").attr("src", gazofiles[num])
+				$("h2").text( gazoText[num] )
+			})
+
+
+			$("body").on("mousemove", function(e){
+				$("img").attr("width", e.clientX)
 			})
 		})
 
