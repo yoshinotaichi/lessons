@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todo</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>todo list</h1>
+	やることリスト
+
+	<hr>
+
+	<input type="text">
+	<button>OK</button>
+
+	<ul>
+	</ul>
+
+	<p></p>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$("button").on("click", function(){
+				const item = $("input").val();
+				$("ul").append( "<li>"+item+"</li>" );
+				$("input").val("");
+			})
+
+			$("body").on("click", "li", function(){
+				$(this).css("text-decoration", "line-through");
+			})
+		})
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test12</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>test12</h1>
+	画像をクリックした回数を表示する
+
+	<hr>
+
+	<img src="img/duke.png">
+
+	<h2>0</h2>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			let count = 0;
+
+			$("img").on("click", function(){
+				count++;
+				$("h2").text(count);
+
+				if( count == 20 ) {
+					$(this).hide();
+				}
+			})
+		})
+	</script>
+
+</body>
+</html>
